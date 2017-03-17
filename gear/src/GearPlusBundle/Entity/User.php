@@ -6,7 +6,7 @@
  * Date: 16/03/2017
  * Time: 11:37
  */
-namespace AppBundle\Entity;
+namespace GearPlusBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
