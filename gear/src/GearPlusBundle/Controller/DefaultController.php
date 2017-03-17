@@ -13,7 +13,7 @@ class DefaultController extends Controller
     /**
      * @Route("/annonces")
      */
-    public function indexAction()
+    public function affProducts()
     {
         $repository = $this->getDoctrine()->getRepository('GearPlusBundle:Product');
         $allprod = $repository->findAll();
