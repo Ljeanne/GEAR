@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Tests\Controller;
+namespace GearPlusBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -19,7 +19,7 @@ class CategoryControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'appbundle_category[field_name]'  => 'Test',
+            'gearplusbundle_category[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class CategoryControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'appbundle_category[field_name]'  => 'Foo',
+            'gearplusbundle_category[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

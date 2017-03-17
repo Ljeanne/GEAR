@@ -1,8 +1,8 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace GearPlusBundle\Controller;
 
-use AppBundle\Entity\Category;
+use GearPlusBundle\Entity\Category;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $categories = $em->getRepository('AppBundle:Category')->findAll();
+        $categories = $em->getRepository('GearPlusBundle:Category')->findAll();
 
         return $this->render('category/index.html.twig', array(
             'categories' => $categories,
@@ -40,7 +40,7 @@ class CategoryController extends Controller
     public function newAction(Request $request)
     {
         $category = new Category();
-        $form = $this->createForm('AppBundle\Form\CategoryType', $category);
+        $form = $this->createForm('GearPlusBundle\Form\CategoryType', $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -82,7 +82,7 @@ class CategoryController extends Controller
     public function editAction(Request $request, Category $category)
     {
         $deleteForm = $this->createDeleteForm($category);
-        $editForm = $this->createForm('AppBundle\Form\CategoryType', $category);
+        $editForm = $this->createForm('GearPlusBundle\Form\CategoryType', $category);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
