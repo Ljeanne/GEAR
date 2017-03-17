@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Category
@@ -15,7 +16,8 @@ class Category
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     *
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
      */
     private $products;
 
@@ -138,4 +140,10 @@ class Category
     {
         return $this->products;
     }
+
+    public function __toString()
+    {
+            return (string) $this->title;
+    }
+
 }
