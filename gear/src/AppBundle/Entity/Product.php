@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Product
@@ -15,7 +16,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
-     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
 
@@ -208,7 +209,7 @@ class Product
      *
      * @return Product
      */
-    public function setBeaute(\integer $beaute)
+    public function setBeaute(int $beaute)
     {
         $this->beaute = $beaute;
 
@@ -247,5 +248,11 @@ class Product
     public function getCategory()
     {
         return $this->category;
+    }
+
+    public function __toString()
+    {
+            return (string) $this->getCategory();
+
     }
 }
