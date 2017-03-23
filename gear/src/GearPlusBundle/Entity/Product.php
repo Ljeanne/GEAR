@@ -164,7 +164,7 @@ class Product
     /**
      * @return int
      */
-    public function getPublished(): int
+    public function getPublished()
     {
         return $this->published;
     }
