@@ -2,10 +2,12 @@
 
 namespace GearPlusBundle\Form;
 
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ProductType extends AbstractType
 {
@@ -14,7 +16,13 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('submit', SubmitType::class);
+        $builder->add('title', null, ['required' => false])
+            ->add('prix', null, ['required' => false])
+            ->add('charisme', null, ['required' => false])
+            ->add('intelligence', null, ['required' => false])
+            ->add('beaute' ,null, ['required' => false])
+            ->add('category', null, ['required' => false])
+            ->add('submit', SubmitType::class);
     }
     
     /**

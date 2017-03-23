@@ -35,11 +35,18 @@ class DefaultController extends Controller
 
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $ok = $form->getData();
-            $tit = '%'.$ok->getTitle().'%';
-//            var_dump($tit);
-            $query = $em->createQuery("SELECT p FROM GearPlusBundle:Product p WHERE p.title LIKE :title"
-            )->setParameter('title', $tit);
+            $res = $form->getData();
+
+//            Gestion du titre
+            $res_title = '%'.$res->getTitle().'%';
+            $res_cat = $res->getCategory();
+            $res_prix = $res->getPrix();
+            $res_charisme = $res->getCharisme();
+            $res_intelligence = $res->getIntelligence();
+            $res_beaute = $res->getBeaute();
+
+            $query = $em->createQuery("SELECT p FROM GearPlusBundle:Product p WHERE p.title LIKE :title AND p.category = :cat"
+            )->setParameter('title', $res_title)->setParameter('cat', $res_cat);
             $find = $query->getResult();
             return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find]);
         }
