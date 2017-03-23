@@ -28,7 +28,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $prod->setEmail("user".$i."@user.com");
             $prod->setEmailCanonical("user".$i."@user.com");
             $prod->setEnabled( 1);
-            $prod->setSalt(random_bytes(10));
             $prod->setLastLogin(new \DateTime());
             $prod->setPassword('123456');
             $prod->setRoles([]);
