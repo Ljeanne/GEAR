@@ -2,10 +2,10 @@
 
 namespace GearPlusBundle\Form;
 
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,6 +23,7 @@ class ProductType extends AbstractType
             ->add('beaute' ,null, ['required' => false])
             ->add('category', null, ['required' => false])
             ->add('submit', SubmitType::class);
+
     }
     
     /**
@@ -40,7 +41,8 @@ class ProductType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'gearplusbundle_product';
+
+        return 'GearPlusBundle_product';
     }
 
 

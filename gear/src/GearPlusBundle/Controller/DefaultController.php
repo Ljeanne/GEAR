@@ -8,6 +8,7 @@ use GearPlusBundle\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
 use GearPlusBundle\Entity\Product;
 
+
 class DefaultController extends Controller
 {
     /**
@@ -59,5 +60,6 @@ class DefaultController extends Controller
         }
 
         return $this->render('GearPlusBundle:Default:succes.html.twig',['nouveauPost' => $form->createView()]);
+
     }
 }
