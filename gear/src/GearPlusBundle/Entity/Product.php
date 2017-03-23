@@ -2,6 +2,8 @@
 
 namespace GearPlusBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -15,7 +17,8 @@ class Product
 {
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
+
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
@@ -49,13 +52,6 @@ class Product
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="published", type="integer")
-     */
-    private $published;
-
 
     /**
      * @var int
@@ -77,6 +73,11 @@ class Product
      * @ORM\Column(name="beaute", type="integer")
      */
     private $beaute;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+    }
 
 
     /**
@@ -162,23 +163,7 @@ class Product
     }
 
     /**
-     * @return int
-     */
-    public function getPublished()
-    {
-        return $this->published;
-    }
 
-    /**
-     * @param int $published
-     */
-    public function setPublished(int $published)
-    {
-        $this->published = $published;
-    }
-
-
-    /**
      * Set charisme
      *
      * @param integer $charisme
@@ -233,7 +218,7 @@ class Product
      *
      * @return Product
      */
-    public function setBeaute(int $beaute)
+    public function setBeaute($beaute)
     {
         $this->beaute = $beaute;
 
@@ -257,7 +242,7 @@ class Product
      *
      * @return Product
      */
-    public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+    public function setCategory(\GearPlusBundle\Entity\Category $category)
     {
         $this->category = $category;
 
