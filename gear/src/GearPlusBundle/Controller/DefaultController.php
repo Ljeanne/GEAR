@@ -45,8 +45,15 @@ class DefaultController extends Controller
             $res_intelligence = $res->getIntelligence();
             $res_beaute = $res->getBeaute();
 
-            $query = $em->createQuery("SELECT p FROM GearPlusBundle:Product p WHERE p.title LIKE :title AND p.category = :cat"
-            )->setParameter('title', $res_title)->setParameter('cat', $res_cat);
+            if(isset($res_cat)){
+                $query = $em->createQuery("SELECT p FROM GearPlusBundle:Product p WHERE p.title LIKE :title AND p.category = :cat"
+                )->setParameter('title', $res_title)->setParameter('cat',$res_cat);
+            }
+            else{
+                $query = $em->createQuery("SELECT p FROM GearPlusBundle:Product p WHERE p.title LIKE :title"
+                )->setParameter('title', $res_title);
+            }
+
             $find = $query->getResult();
             return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find]);
         }
