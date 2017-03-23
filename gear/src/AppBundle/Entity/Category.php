@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 /**
  * Category
@@ -138,4 +139,14 @@ class Category
     {
         return $this->products;
     }
+
+    public function __toString()
+    {
+        try {
+            return (string) $this->title;
+        } catch (Exception $exception) {
+            return '';
+        }
+    }
+
 }
