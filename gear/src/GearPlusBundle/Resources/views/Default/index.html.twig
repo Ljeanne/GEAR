@@ -8,14 +8,29 @@
         <title>Document</title>
     </head>
     <body>
+
     <p>Liste des annonces</p>
 
     <table>
+            <tr>
+                <th>
+                    Titre
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Charisme
+                </th>
+                <th>
+                    Beaute
+                </th>
+                <th>
+                    Intelligence
+                </th>
+            </tr>
         {% for item in allprod %}
             <tr>
-                <td>
-                    {{ item.id }}
-                </td>
                 <td>
                     {{ item.title }}
                 </td>

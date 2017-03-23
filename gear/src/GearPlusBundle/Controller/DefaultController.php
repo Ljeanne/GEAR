@@ -26,7 +26,7 @@ class DefaultController extends Controller
      */
     public function search(Request $request)
     {
-        $repository = $this->getDoctrine()->getRepository('GearPlusBundle:Product');
+//        $repository = $this->getDoctrine()->getRepository('GearPlusBundle:Product');
 
         $new = new Product();
         $form = $this->createForm(ProductType::class, $new);
@@ -37,7 +37,6 @@ class DefaultController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $res = $form->getData();
 
-//            Gestion du titre
             $res_title = '%'.$res->getTitle().'%';
             $res_cat = $res->getCategory();
             $res_prix = $res->getPrix();
@@ -58,6 +57,6 @@ class DefaultController extends Controller
             return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find]);
         }
 
-        return $this->render('GearPlusBundle:Default:succes.html.twig',['nouveauPost' => $form->createView()]);
+        return $this->render('GearPlusBundle:Default:succes.html.twig',['form' => $form->createView()]);
     }
 }
