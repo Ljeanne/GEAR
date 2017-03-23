@@ -143,6 +143,16 @@ class Category
 
     public function __toString()
     {
+        try {
+            return (string) $this->title;
+        } catch (Exception $exception) {
+            return '';
+        }
+    }
+
+
+    public function __toString()
+    {
             return (string) $this->title;
     }
 
