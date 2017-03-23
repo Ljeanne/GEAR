@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace GearPlusBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Config\Definition\Exception\Exception;
@@ -9,7 +9,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * Product
  *
  * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
+ * @ORM\Entity(repositoryClass="GearPlusBundle\Repository\ProductRepository")
  */
 class Product
 {
@@ -49,6 +49,13 @@ class Product
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="published", type="integer")
+     */
+    private $published;
+
 
     /**
      * @var int
@@ -155,6 +162,23 @@ class Product
     }
 
     /**
+     * @return int
+     */
+    public function getPublished(): int
+    {
+        return $this->published;
+    }
+
+    /**
+     * @param int $published
+     */
+    public function setPublished(int $published)
+    {
+        $this->published = $published;
+    }
+
+
+    /**
      * Set charisme
      *
      * @param integer $charisme
@@ -209,7 +233,7 @@ class Product
      *
      * @return Product
      */
-    public function setBeaute(  $beaute)
+    public function setBeaute(int $beaute)
     {
         $this->beaute = $beaute;
 
@@ -229,11 +253,11 @@ class Product
     /**
      * Set category
      *
-     * @param \AppBundle\Entity\Category $category
+     * @param \GearPlusBundle\Entity\Category $category
      *
      * @return Product
      */
-    public function setCategory(\AppBundle\Entity\Category $category = null)
+    public function setCategory(\GearPlusBundle\Entity\Category $category = null)
     {
         $this->category = $category;
 
@@ -243,7 +267,7 @@ class Product
     /**
      * Get category
      *
-     * @return \AppBundle\Entity\Category
+     * @return \GearPlusBundle\Entity\Category
      */
     public function getCategory()
     {

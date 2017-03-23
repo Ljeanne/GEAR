@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace GearPlusBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,13 +10,14 @@ use Symfony\Component\Config\Definition\Exception\Exception;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="GearPlusBundle\Repository\CategoryRepository")
  */
 class Category
 {
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     *
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
      */
     private $products;
 
@@ -109,11 +110,11 @@ class Category
     /**
      * Add product
      *
-     * @param \AppBundle\Entity\Product $product
+     * @param \GearPlusBundle\Entity\Product $product
      *
      * @return Category
      */
-    public function addProduct(\AppBundle\Entity\Product $product)
+    public function addProduct(\GearPlusBundle\Entity\Product $product)
     {
         $this->products[] = $product;
 
@@ -123,9 +124,9 @@ class Category
     /**
      * Remove product
      *
-     * @param \AppBundle\Entity\Product $product
+     * @param \GearPlusBundle\Entity\Product $product
      */
-    public function removeProduct(\AppBundle\Entity\Product $product)
+    public function removeProduct(\GearPlusBundle\Entity\Product $product)
     {
         $this->products->removeElement($product);
     }
@@ -147,6 +148,12 @@ class Category
         } catch (Exception $exception) {
             return '';
         }
+    }
+
+
+    public function __toString()
+    {
+            return (string) $this->title;
     }
 
 }
