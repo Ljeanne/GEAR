@@ -3,6 +3,7 @@
 namespace GearPlusBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Config\Definition\Exception\Exception;
 
@@ -17,6 +18,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
+
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
@@ -76,6 +78,7 @@ class Product
     {
         $this->category = new ArrayCollection();
     }
+
 
     /**
      * Get id
@@ -160,6 +163,7 @@ class Product
     }
 
     /**
+
      * Set charisme
      *
      * @param integer $charisme

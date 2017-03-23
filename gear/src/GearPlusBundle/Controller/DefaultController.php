@@ -8,6 +8,7 @@ use GearPlusBundle\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
 use GearPlusBundle\Entity\Product;
 
+
 class DefaultController extends Controller
 {
     /**
@@ -85,6 +86,7 @@ class DefaultController extends Controller
             $find = $sql->getResult();
             return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find, 'form'=>$form->createView()]);
         }
+
 
         return $this->render('GearPlusBundle:Default:index.html.twig',['form' => $form->createView(), 'allprod'=>$allprod]);
     }
