@@ -82,6 +82,29 @@ class Product
      */
     private $beaute;
 
+    /**
+     * @var string
+     * @ORM\Column (name="avatar", type="string", length=255)
+     */
+
+    private $avatar="https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png";
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
