@@ -19,7 +19,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository('GearPlusBundle:Product');
         $allprod = $repository->findAll();
 
-        return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$allprod]);
+        return $this->render('GearPlusBundle:Default:index.html.twig', ['allprod' => $allprod]);
     }
 
     /**
