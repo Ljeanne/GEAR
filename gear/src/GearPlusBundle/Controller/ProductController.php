@@ -81,21 +81,36 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
-        $deleteForm = $this->createDeleteForm($product);
-        $editForm = $this->createForm('GearPlusBundle\Form\ProductType', $product);
-        $editForm->handleRequest($request);
+        $user = $this->getUser();
+        $userID = $this->getUser()->getId();
+        $product_user_id = $product->getUser()->getId();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if ($userID == $product_user_id OR $user->hasRole('ROLE_ADMIN') OR  $user->hasRole('ROLE_SUPER_ADMIN'))
+        {
+            $deleteForm = $this->createDeleteForm($product);
+            $editForm = $this->createForm('GearPlusBundle\Form\ProductType', $product);
+            $editForm->handleRequest($request);
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            }
+
+            return $this->render('product/edit.html.twig', array(
+                'product' => $product,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
         }
-
-        return $this->render('product/edit.html.twig', array(
-            'product' => $product,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        else
+        {
+            $request->getSession()
+                ->getFlashBag()
+                ->add('failure', 'Vous ne pouvez modifier ce produit: Il ne vous appartient pas !!! SALOPARD !!!!')
+            ;
+            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
+        }
     }
 
     /**
@@ -106,16 +121,32 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
-        $form = $this->createDeleteForm($product);
-        $form->handleRequest($request);
+        $user = $this->getUser();
+        $userID = $this->getUser()->getId();
+        $product_user_id = $product->getUser()->getId();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($product);
-            $em->flush();
+        if ($userID == $product_user_id OR $user->hasRole('ROLE_ADMIN') OR  $user->hasRole('ROLE_SUPER_ADMIN'))
+        {
+            $form = $this->createDeleteForm($product);
+            $form->handleRequest($request);
+
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($product);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('product_index');
+        }
+        else
+        {
+            $request->getSession()
+                ->getFlashBag()
+                ->add('failure', 'Vous ne pouvez supprimer ce produit: Il ne vous appartient pas !!! SALOPARD !!!!')
+            ;
+            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
 
-        return $this->redirectToRoute('product_index');
     }
 
     /**
