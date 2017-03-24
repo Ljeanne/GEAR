@@ -16,13 +16,43 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class Product
 {
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="products" , cascade={"persist"})
+
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+
+
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
 
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
+    /**
+     * @ORM\ManyToOne(targetEntity="user", inversedBy="products" , cascade={"persist"})
 
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
     /**
      * @var int
      *
@@ -235,6 +265,24 @@ class Product
         return $this->beaute;
     }
 
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
     /**
      * Set category
      *
@@ -242,7 +290,9 @@ class Product
      *
      * @return Product
      */
+
     public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+
     {
         $this->category = $category;
 
@@ -258,6 +308,8 @@ class Product
     {
         return $this->category;
     }
+
+
 
     public function __toString()
     {
