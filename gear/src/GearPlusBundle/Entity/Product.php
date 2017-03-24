@@ -268,7 +268,9 @@ class Product
      *
      * @return Product
      */
-    public function setCategory(\GearPlusBundle\Entity\Category $category=null)
+
+    public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+
     {
         $this->category = $category;
 

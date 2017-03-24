@@ -8,14 +8,33 @@
         <title>Document</title>
     </head>
     <body>
-    <p>Liste des annonces</p>
+    <h1>Recherche</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <h1>Liste des Annonces</h1>
 
     <table>
+            <tr>
+                <th>
+                    Titre
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Charisme
+                </th>
+                <th>
+                    Beaute
+                </th>
+                <th>
+                    Intelligence
+                </th>
+            </tr>
         {% for item in allprod %}
             <tr>
-                <td>
-                    {{ item.id }}
-                </td>
                 <td>
                     {{ item.title }}
                 </td>
