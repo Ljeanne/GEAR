@@ -17,6 +17,13 @@ class Product
 {
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="products" , cascade={"persist"})
+
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     */
+    private $user;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
 
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
@@ -73,6 +80,29 @@ class Product
      * @ORM\Column(name="beaute", type="integer")
      */
     private $beaute;
+
+    /**
+     * @var string
+     * @ORM\Column (name="avatar", type="string", length=255)
+     */
+
+    private $avatar="https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png";
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
 
     public function __construct()
     {

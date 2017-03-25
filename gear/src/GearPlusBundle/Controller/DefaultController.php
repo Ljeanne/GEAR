@@ -12,7 +12,7 @@ use GearPlusBundle\Entity\Product;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/annonces")
+     * @Route("/annonces" , name="annonces")
      */
     public function affProducts(Request $request)
     {
@@ -71,10 +71,10 @@ class DefaultController extends Controller
             }
 
             $find = $sql->getResult();
-            return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find, 'form'=>$form->createView()]);
+            return $this->render('GearPlusBundle:Default:product.html.twig',['products'=>$find, 'form'=>$form->createView()]);
         }
 
 
-        return $this->render('GearPlusBundle:Default:index.html.twig',['form' => $form->createView(), 'allprod'=>$allprod]);
+        return $this->render('GearPlusBundle:Default:product.html.twig',['form' => $form->createView(), 'products'=>$allprod]);
     }
 }
