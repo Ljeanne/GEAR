@@ -49,3 +49,9 @@
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
 .idea/*
+
+.DS_Store
+gear/.DS_Store
+gear/app/.DS_Store
+.gitignore
+

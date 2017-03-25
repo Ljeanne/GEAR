@@ -3,6 +3,14 @@
 {% block body %}
     <h1>Product</h1>
 
+    {% if app.session.flashBag.has('failure') %}
+        <div class="alert alert-danger">
+            {% for msg in app.session.flashBag.get('failure') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <table>
         <tbody>
             <tr>
@@ -33,20 +41,29 @@
                 <th>Beaute</th>
                 <td>{{ product.beaute }}</td>
             </tr>
+            <tr>
+                <th>Avatar</th>
+                <td><img src="{{ product.avatar }}"></td>
+            </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
+            <a href="{{ path('annonces') }}">Back to the list</a>
         </li>
-        <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
+        {% if app.session.flashBag.has('failure') %}
+            <li>
+                <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
                 <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+                {{ form_end(delete_form) }}
+            </li>
+        {% else %}
+
+        {% endif %}
+
     </ul>
 {% endblock %}

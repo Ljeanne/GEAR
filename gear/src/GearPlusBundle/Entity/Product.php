@@ -24,7 +24,6 @@ class Product
      */
     private $user;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
 
@@ -83,6 +82,29 @@ class Product
      * @ORM\Column(name="beaute", type="integer")
      */
     private $beaute;
+
+    /**
+     * @var string
+     * @ORM\Column (name="avatar", type="string", length=255)
+     */
+
+    private $avatar="https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png";
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+    }
 
     public function __construct()
     {
@@ -270,7 +292,9 @@ class Product
      *
      * @return Product
      */
-    public function setCategory(\GearPlusBundle\Entity\Category $category=null)
+
+    public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+
     {
         $this->category = $category;
 
