@@ -31,6 +31,7 @@ class Product
      */
     private $category;
 
+
     /**
      * @var int
      *

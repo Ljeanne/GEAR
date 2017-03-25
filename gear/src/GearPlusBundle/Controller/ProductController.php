@@ -81,6 +81,7 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
+
         $user = $this->getUser();
         $userID = $this->getUser()->getId();
         $product_user_id = $product->getUser()->getId();
@@ -102,6 +103,7 @@ class ProductController extends Controller
                 'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
             ));
+
         }
         else
         {
@@ -121,6 +123,7 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
+
         $user = $this->getUser();
         $userID = $this->getUser()->getId();
         $product_user_id = $product->getUser()->getId();
