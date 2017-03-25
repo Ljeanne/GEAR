@@ -81,21 +81,37 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
-        $deleteForm = $this->createDeleteForm($product);
-        $editForm = $this->createForm('GearPlusBundle\Form\ProductType', $product);
-        $editForm->handleRequest($request);
+        $userID= $this->getUser()->getId();
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        $q=$product->getUser()->getId();
+        if($userID == $q){
+            $deleteForm = $this->createDeleteForm($product);
+            $editForm = $this->createForm('GearPlusBundle\Form\ProductType', $product);
+            $editForm->handleRequest($request);
 
-            return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            if ($editForm->isSubmitted() && $editForm->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+
+                return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+            }
+
+            return $this->render('product/edit.html.twig', array(
+                'product' => $product,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            ));
+        }
+        else{
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Welcome to the Death Star, have a magical day!')
+            ;
+            return $this->redirectToRoute('product_show', array('id' => $product->getId()));
+
         }
 
-        return $this->render('product/edit.html.twig', array(
-            'product' => $product,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+
     }
 
     /**
@@ -106,6 +122,7 @@ class ProductController extends Controller
      */
     public function deleteAction(Request $request, Product $product)
     {
+
         $form = $this->createDeleteForm($product);
         $form->handleRequest($request);
 
