@@ -1,8 +1,8 @@
 # GEAR
 
-#Initialisation du projet
+# Initialisation du projet
 ## 1) mettre à jours les dépendances :
-###composer install
+### composer install
 ## 2) Démarrer le serveur : php bin/console server:run
 
 #DATABASE
