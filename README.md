@@ -5,7 +5,7 @@
 ### composer install
 ## 2) Démarrer le serveur : php bin/console server:run
 
-#DATABASE
+# DATABASE
 ## 1) créer une base de donnée 
 ## 2) php bin/console doctrine:schema:update --force
 ## 3) php bin/console doctrine:fixture:load
