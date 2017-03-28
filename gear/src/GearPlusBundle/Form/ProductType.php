@@ -3,6 +3,7 @@
 namespace GearPlusBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,7 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('description')->add('prix')->add('charisme')->add('intelligence')->add('beaute')->add('avatar')->add('user')->add('category');
+        $builder->add('title')->add('description')->add('prix')->add('charisme')->add('intelligence')->add('beaute')->add('avatar')->add('user')->add('category')->add('submit', SubmitType::class);
     }
     
     /**
