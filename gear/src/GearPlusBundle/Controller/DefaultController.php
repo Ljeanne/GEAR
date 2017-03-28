@@ -11,6 +11,53 @@ use GearPlusBundle\Entity\Product;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * @Route("/accueil")
+     */
+
+    // ACCUEIL
+    public function accueilObject()
+    {
+        //
+        $entitymanager = $this->getDoctrine()->getManager();
+        $elements = $entitymanager->createquery('SELECT p.id FROM GearPlusBundle:Product p')->getResult();
+        $length = count($elements);
+        $i = 0;
+        $tableau = [];
+        while ($i<5) {
+            $rand = rand(0, $length-1);
+            $id1 = $elements[$rand];
+            $repository = $this->getDoctrine()->getRepository(Product::class);
+            $ele1 = $repository->findById($id1['id']);
+            array_push($tableau, $ele1);
+            $i++;
+        }
+        return $this->render('GearPlusBundle:Default:index.html.twig', ['tableau'=>$tableau]);
+    }
+
+
+    /**
+     * @Route("/object")
+     */
+
+    // ACCUEIL
+    public function objectObject()
+    {
+        return $this->render('GearPlusBundle:Default:object.html.twig');
+    }
+
+    /**
+     * @Route("/user")
+     */
+
+    // ACCUEIL
+    public function userObject()
+    {
+        return $this->render('GearPlusBundle:Default:object.html.twig');
+    }
+
+
     /**
      * @Route("/annonces" , name="annonces")
      */
@@ -71,10 +118,10 @@ class DefaultController extends Controller
             }
 
             $find = $sql->getResult();
-            return $this->render('GearPlusBundle:Default:product.html.twig',['products'=>$find, 'form'=>$form->createView()]);
+            return $this->render('GearPlusBundle:Default:search.html.twig',['products'=>$find, 'form'=>$form->createView()]);
         }
 
 
-        return $this->render('GearPlusBundle:Default:product.html.twig',['form' => $form->createView(), 'products'=>$allprod]);
+        return $this->render('GearPlusBundle:Default:search.html.twig',['form' => $form->createView(), 'products'=>$allprod]);
     }
 }

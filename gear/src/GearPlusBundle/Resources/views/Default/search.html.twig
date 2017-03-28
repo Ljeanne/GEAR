@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <body>
+
+        <header>
+            <nav class="center">
+                <a href="#" id="logo"></a>
+                <ul>
+                    <li><a href="index" id="home">Accueil</a></li>
+                    <li><a href="annonces" id="search">Rechercher</a></li>
+                    <li><a href="account" id="connect">Mon compte</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="center">
+            <h1>Recherche</h1>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+            <a href="{{ path('product_new') }}" style=" margin: 26px 0; display: block;">Create a new product</a>
+
+            <h1>Products list</h1>
+
+
+            <ul class="listproduct">
+                {% for product in products %}
+                    <li class="product">
+                        <div class="gotall">
+                            <div class="imgproduct">
+                                <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+                            </div>
+                            <div class="text-product">
+                                <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
+                                <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                                <p class="prix">{{ product.prix }} €</p>
+                            </div>
+                            <div class="statproduct">
+                                <p class="pictostat statbea">BEA : {{ product.beaute }}</p>
+                                <p class="pictostat statcha">CHA : {{ product.charisme }}</p>
+                                <p class="pictostat statint">INT : {{ product.intelligence }}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <ul>
+                <li>
+                </li>
+            </ul>
+
+        </main>
+
+    </body>
+    {% endblock %}

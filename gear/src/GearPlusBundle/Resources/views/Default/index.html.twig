@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="shortcut icon" type="image/png" href="{{ asset('bundles/GearPlusBundle/media/favicon.png') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/reset.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/main.css') }}" />
+        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/main.js') }}"></script>
+        <title>Accueil</title>
+    </head>
+
+    <body>
+
+    <header>
+        <nav class="center">
+            <a href="#" id="logo"></a>
+            <ul>
+                <li><a href="index" id="home">Accueil</a></li>
+                <li><a href="annonces" id="search">Rechercher</a></li>
+                <li><a href="account" id="connect">Mon compte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="fiche center">
+
+        <ul class="listproduct">
+
+            {% for item in tableau %}
+                <li class="product">
+                    <div class="gotall">
+                        <div class="imgproduct">
+                            <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+                        </div>
+                        <div class="text-product">
+                            <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
+                            <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                            <p class="prix">{{ item.0.prix }} €</p>
+                        </div>
+                        <div class="statproduct">
+                            <p class="pictostat statbea">BEA : {{ item.0.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ item.0.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ item.0.intelligence }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    </body>
+</html>
