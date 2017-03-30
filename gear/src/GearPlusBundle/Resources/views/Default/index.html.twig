@@ -1,33 +1,10 @@
-<!doctype html>
+{% extends 'base.html.twig' %}
 
-<html lang="fr">
+{% block body %}
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="shortcut icon" type="image/png" href="{{ asset('bundles/GearPlusBundle/media/favicon.png') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/reset.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/main.css') }}" />
-        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/main.js') }}"></script>
-        <title>Accueil</title>
-    </head>
+    <main class="center">
 
-    <body>
-
-    <header>
-        <nav class="center">
-            <a href="#" id="logo"></a>
-            <ul>
-                <li><a href="index" id="home">Accueil</a></li>
-                <li><a href="search" id="search">Rechercher</a></li>
-                <li><a href="account" id="connect">Mon compte</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="fiche center">
+        <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="#">en vous connectant</a>. </p>
 
         <ul class="listproduct">
 
@@ -39,7 +16,7 @@
                         </div>
                         <div class="text-product">
                             <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
-                            <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                            <p class="seller">Vendeur : Martin Vendeur (95)</p>
                             <p class="prix">{{ item.0.prix }} €</p>
                         </div>
                         <div class="statproduct">
@@ -54,5 +31,4 @@
         </ul>
     </main>
 
-    </body>
-</html>
+{% endblock %}

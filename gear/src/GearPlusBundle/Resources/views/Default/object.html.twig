@@ -1,31 +1,6 @@
-<!doctype html>
+{% extends 'base.html.twig' %}
 
-<html lang="fr">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="shortcut icon" type="image/png" href="{{ asset('bundles/GearPlusBundle/media/favicon.png') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/reset.css') }}" />
-        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/main.css') }}" />
-        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/jquery.min.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/main.js') }}"></script>
-        <title>Object</title>
-    </head>
-
-    <body>
-
-        <header>
-            <nav class="center">
-                <a href="#" id="logo"></a>
-                <ul>
-                    <li><a href="index" id="home">Accueil</a></li>
-                    <li><a href="search" id="search">Rechercher</a></li>
-                    <li><a href="account" id="connect">Mon compte</a></li>
-                </ul>
-            </nav>
-        </header>
+{% block body %}
 
         <main class="fiche center">
             <div class="imgproduct-f">
@@ -33,20 +8,20 @@
             </div>
             <div class="text-product clearfix">
                 <h2><a href="#" class="title-product">Casquette DOPE</a></h2>
-                <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                <p>Vendeur : Martin Vendeur (95)</p>
                 <p class="prix">12 €</p>
             </div>
 
             <div class="statproduct-f">
-                <p class="pictostat statbea">BEA : 0</p>
-                <p class="pictostat statcha">CHA : 0</p>
-                <p class="pictostat statint">INT : 0</p>
+                <p class="pictostat statbea">BEAUTÉ : 0</p>
+                <p class="pictostat statcha">CHARISME : 0</p>
+                <p class="pictostat statint">INTELLIGENCE : 0</p>
             </div>
 
             <div class="fiche-content">
                 <div class="description">
                     <h2>Description</h2>
-                    <p>oaiqzns dlkqsdp qsdpjqspqj poqsdkpqskdàpkqsà^d kàqpsd à^qsdpàkq sdàpkqsàpk dàqskdpqksd  pàksqdpkqspdk pqsokf dqpos kdpoqskdopkqs pdo kqspdk posqjpofpàjgfpà qjfdpojqdfspo   ijsqfopdsijqf opisqdjdpofj oidspij opdsqj fopjsdipoxf jdops fjpoids jopidsfjopidsjf poidsjf opisdjfpojifd spoijfposdijf opdijsfopdsijfposdj opifdsj pofidjiopfdsjpod ifjdfôijdsiopfj ifdidjdfoi jdijoiqdjs ofjoidjiod oidjfodijoidjf doiqsj foisdfjiodjoidjsoi dsoisd jfoisdjf oidjfoidsfjoisdjoidsjfoisdjfoisf</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sit amet ipsum nec ipsum blandit egestas. Proin vel tellus orci. Integer vitae porttitor nisl, a convallis erat. Proin aliquam commodo posuere. Duis ullamcorper risus vitae ex dictum, ac laoreet magna mollis. Vestibulum sed elementum orci. Phasellus ac semper nulla, sed consectetur massa. Duis malesuada a dolor vel feugiat. Nunc ultrices lacinia sapien blandit tincidunt. Phasellus finibus eros in tortor volutpat tincidunt at nec est. Aliquam dapibus mi arcu, et aliquet enim laoreet ac.</p>
                 </div>
                 <div class="contact">
                     <h2>Contact :</h2>
@@ -58,5 +33,4 @@
             </div>
         </main>
 
-    </body>
-</html>
+{% endblock %}

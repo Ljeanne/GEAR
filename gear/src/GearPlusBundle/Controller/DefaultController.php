@@ -54,7 +54,7 @@ class DefaultController extends Controller
     // ACCUEIL
     public function userObject()
     {
-        return $this->render('GearPlusBundle:Default:object.html.twig');
+        return $this->render('GearPlusBundle:Default:user.html.twig');
     }
 
 
