@@ -18,9 +18,28 @@
 
         <main class="center">
             <h1>Recherche</h1>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+
+                {{ form_label(form.category) }}
+                {{ form_widget(form.category) }}
+
+                {{ form_label(form.prix) }}
+                {{ form_widget(form.prix) }}
+
+                {{  form_label(form.charisme) }}
+                {{ form_widget(form.charisme) }}
+
+                {{ form_label(form.intelligence) }}
+                {{ form_widget(form.intelligence) }}
+
+                {{ form_label(form.beaute) }}
+                {{ form_widget(form.beaute) }}
+
+                {{ form_label(form.submit) }}
+                {{ form_widget(form.submit) }}
+
 
             <a href="{{ path('product_new') }}" style=" margin: 26px 0; display: block;">Create a new product</a>
 
