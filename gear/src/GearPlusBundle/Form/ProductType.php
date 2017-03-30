@@ -25,7 +25,7 @@ class ProductType extends AbstractType
             ->add('avatar', FileType::class, array('label' => 'Photo du produit','required' => false))
             ->add('user', null, array('label' => 'Utilisateur','required' => false))
             ->add('category', null, array('label' => 'Categorie du produit','required' => false))
-            ->add('submit', SubmitType::class, array('label' => 'Rechercher'));
+            ->add('submit', SubmitType::class, array('label' => 'Envoyer'));
     }
     
     /**
