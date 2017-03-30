@@ -19,7 +19,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
  */
 class ProductController extends Controller
 {
-
     /**
      * Check if this user has this product as favoris
      * @param $product_id
@@ -45,7 +44,7 @@ class ProductController extends Controller
     /**
      * @Route("/addFavoris/{userid}/{productid}", name="addFavoris")
      */
-    public function addFavoris($userid, $productid)
+    public function addFavoris($productid)
     {
         $em = $this->getDoctrine()->getManager();
         $favoris = new favoris();
