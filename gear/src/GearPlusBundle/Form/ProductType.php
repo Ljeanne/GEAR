@@ -15,16 +15,16 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, array('required' => false))
-            ->add('description', null, array('required' => false))
-            ->add('prix', null, array('required' => false))
-            ->add('charisme', null, array('required' => false))
-            ->add('intelligence', null, array('required' => false))
-            ->add('beaute', null, array('required' => false))
-            ->add('avatar', null, array('required' => false))
-            ->add('user', null, array('required' => false))
-            ->add('category', null, array('required' => false))
-            ->add('submit', SubmitType::class);
+            ->add('title', null, array('label' => 'Titre','required' => false))
+            ->add('description', null, array('label' => 'Description du produit','required' => false))
+            ->add('prix', null, array('label' => 'Prix', 'required' => false))
+            ->add('charisme', null, array('label' => 'Bonus Charisme', 'required' => false))
+            ->add('intelligence', null, array('label' => 'Bonus Intelligence', 'required' => false))
+            ->add('beaute', null, array('label' => 'Bonus Beauté', 'required' => false))
+            ->add('avatar', null, array('label' => 'Photo du produit','required' => false))
+            ->add('user', null, array('label' => 'Utilisateur','required' => false))
+            ->add('category', null, array('label' => 'Categorie du produit','required' => false))
+            ->add('submit', SubmitType::class, array('label' => 'Rechercher'));
     }
     
     /**
