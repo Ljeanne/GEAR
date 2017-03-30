@@ -37,17 +37,6 @@ class DefaultController extends Controller
         return $this->render('GearPlusBundle:Default:index.html.twig', ['tableau'=>$tableau]);
     }
 
-
-    /**
-     * @Route("/object")
-     */
-
-    // ACCUEIL
-    public function objectObject()
-    {
-        return $this->render('GearPlusBundle:Default:object.html.twig');
-    }
-
     /**
      * @Route("/profileuser", name="profileuser")
      */
@@ -55,7 +44,10 @@ class DefaultController extends Controller
     // Profil
     public function userObject()
     {
-        return $this->render('GearPlusBundle:Default:user.html.twig');
+        $userId=$this->getUser()->getId();
+        $allProducts = $this->getDoctrine()->getRepository(Product::class)->findBy(
+            array('user'=>$userId));
+        return $this->render('GearPlusBundle:Default:user.html.twig',['tout_les_prod'=>$allProducts]);
     }
 
 
