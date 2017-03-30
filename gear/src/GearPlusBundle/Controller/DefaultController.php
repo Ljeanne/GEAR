@@ -21,7 +21,6 @@ class DefaultController extends Controller
     // ACCUEIL
     public function accueilObject()
     {
-        //
         $entitymanager = $this->getDoctrine()->getManager();
         $elements = $entitymanager->createquery('SELECT p.id FROM GearPlusBundle:Product p')->getResult();
         $length = count($elements);
