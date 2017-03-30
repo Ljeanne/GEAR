@@ -51,12 +51,11 @@ class DefaultController extends Controller
      * @Route("/profileuser", name="profileuser")
      */
 
-    // ACCUEIL
+    // Profil
     public function userObject()
     {
         return $this->render('GearPlusBundle:Default:user.html.twig');
     }
-
 
     /**
      * @Route("/annonces" , name="annonces")
@@ -120,6 +119,9 @@ class DefaultController extends Controller
             $find = $sql->getResult();
             return $this->render('GearPlusBundle:Default:search.html.twig',['products'=>$find, 'form'=>$form->createView()]);
         }
+
+
+
 
 
         return $this->render('GearPlusBundle:Default:search.html.twig',['form' => $form->createView(), 'products'=>$allprod]);

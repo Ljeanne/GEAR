@@ -2,5 +2,11 @@
 
 {% block body %}
 
+    {# console : php ./bin/console debug;router #}
+    {{ app.user.username }}
+    {{ app.user.email }}
+    <a href="{{ path ('fos_user_profile_edit') }}">Edit Username / Email</a>
+    <a href="{{ path ('fos_user_change_password') }}">Edit Password</a>
+
 
 {% endblock %}
