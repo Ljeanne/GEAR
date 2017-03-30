@@ -99,10 +99,10 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column (name="avatar", type="string", length=255)
+     * @ORM\Column (name="avatar", type="string", length=255, nullable=true)
      */
 
-    private $avatar="https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png";
+    private $avatar;
 
     /**
      * @return mixed

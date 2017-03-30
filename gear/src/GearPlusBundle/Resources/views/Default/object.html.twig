@@ -2,7 +2,6 @@
 
 {% block body %}
 
-
         <main class="fiche center">
             <div class="imgproduct-f">
                 <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
@@ -33,4 +32,38 @@
                 </div>
             </div>
         </main>
+
+    <main class="fiche center">
+        <div class="imgproduct-f">
+            <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+        </div>
+        <div class="text-product clearfix">
+            <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
+            <p>Vendeur : {{ product.getUser.getUsername }}</p>
+            <p class="prix">{{ product.prix }} €</p>
+        </div>
+
+        <div class="statproduct-f">
+            <p class="pictostat statbea">BEAUTÉ : {{ product.beaute }}</p>
+            <p class="pictostat statcha">CHARISME : {{ product.charisme }}</p>
+            <p class="pictostat statint">INTELLIGENCE : {{ product.intelligence }}</p>
+        </div>
+
+        <div class="fiche-content">
+            <div class="description">
+                <h2>Description</h2>
+                <p>{{ product.description }}</p>
+            </div>
+            <div class="contact">
+                <h2>Contact :</h2>
+                <ul>
+                    <li>Email : <a href="#">{{ product.getUser.getEmail }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+
+
+
 {% endblock %}
