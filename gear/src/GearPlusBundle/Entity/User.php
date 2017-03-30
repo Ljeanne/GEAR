@@ -32,8 +32,6 @@ class User extends BaseUser
     protected $products;
 
 
-
-
     /**
      * @var string
      * @ORM\Column (name="avatar", type="string", length=255)
