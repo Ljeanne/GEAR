@@ -142,6 +142,11 @@ class DefaultController extends Controller
                 $query= $query."AND p.intelligence >= :intelligence ";
                 $parameters['intelligence']=$res_intelligence;
             }
+            if(isset($res_prix))
+            {
+                $query= $query."AND p.prix <= :prix ";
+                $parameters['prix']=$res_prix;
+            }
             //var_dump($query);
             $sql =  $em->createQuery($query);
 

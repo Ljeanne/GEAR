@@ -10,7 +10,7 @@
             <form action="#" method="post">
                 {{ form_row(form.title) }}
                 {{ form_row(form.category) }}
-                {{ form_row(form.prix) }}
+                {{ form_row(form.prix)}}
                 {{ form_row(form.charisme) }}
                 {{ form_row(form.intelligence) }}
                 {{ form_row(form.beaute) }}
@@ -28,13 +28,11 @@
                     <li class="product">
                         <div class="gotall">
                             <div class="imgproduct">
-                                <img src="
-            {% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}
-">
+                                <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
                             </div>
                             <div class="text-product">
                                 <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
-                                <p>Vendeur : {{ product.getUser.getUsername }}</p>
+                                <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
                                 <p class="prix">{{ product.prix }} €</p>
                             </div>
                             <div class="statproduct">
