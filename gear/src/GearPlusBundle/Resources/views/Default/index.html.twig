@@ -2,7 +2,7 @@
 
 {% block body %}
     <main class="center">
-        <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="{{ path('login') }}">en vous connectant</a>. </p>
+        <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="{{ path('fos_user_security_login') }}">en vous connectant</a>. </p>
         <ul class="listproduct">
 
             {% for product in tableau %}
