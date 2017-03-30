@@ -14,7 +14,17 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title')->add('description')->add('prix')->add('charisme')->add('intelligence')->add('beaute')->add('avatar')->add('user')->add('category')->add('submit', SubmitType::class);
+        $builder
+            ->add('title', null, array('required' => false))
+            ->add('description', null, array('required' => false))
+            ->add('prix', null, array('required' => false))
+            ->add('charisme', null, array('required' => false))
+            ->add('intelligence', null, array('required' => false))
+            ->add('beaute', null, array('required' => false))
+            ->add('avatar', null, array('required' => false))
+            ->add('user', null, array('required' => false))
+            ->add('category', null, array('required' => false))
+            ->add('submit', SubmitType::class);
     }
     
     /**
