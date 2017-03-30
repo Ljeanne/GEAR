@@ -25,9 +25,9 @@
                         <li><a href="{{ path("home") }}" id="home">Accueil</a></li>
                         <li><a href="{{ path('annonces') }}" id="search">Rechercher</a></li>
                         {% if app.user %}
-                          <li><a href="/profileuser" id="connect">Mon compte</a></li>
+                          <li><a href="{{ path('profileuser') }}" id="connect">Mon compte</a></li>
                         {% else %}
-                           <li><a href="/login" id="connect">Se connecter</a></li>
+                           <li><a href="{{ path('login') }}" id="connect">Se connecter</a></li>
                         {% endif %}
                     </ul>
                 </nav>
