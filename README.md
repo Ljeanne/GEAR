@@ -3,10 +3,9 @@
 # Initialisation du projet
 ## 1) mettre à jours les dépendances :
 ### composer install
-## 2) Démarrer le serveur : php bin/console server:run
 
 # DATABASE
-## 1) créer une base de donnée 
+## 1) créer une base de données (s'assurer qu'elle est vide)
 ## 2) php bin/console doctrine:schema:update --force
 ## 3) php bin/console doctrine:fixture:load
 ## les utilisateurs et leur produits seront créé 
@@ -18,3 +17,7 @@
 #### 1) php bin/console fos:user:promote user1
 #### 2) donner le role ROLE_ADMIN 
 
+
+#Demarrer le server
+## Démarrer le serveur :
+### php bin/console server:run
