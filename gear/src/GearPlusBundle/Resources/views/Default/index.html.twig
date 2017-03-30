@@ -5,21 +5,21 @@
         <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="#">en vous connectant</a>. </p>
         <ul class="listproduct">
 
-            {% for item in tableau %}
+            {% for product in tableau %}
                 <li class="product">
                     <div class="gotall">
                         <div class="imgproduct">
-                            <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+                            <img src="{% if product.0.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.0.avatar }}{% endif %}">
                         </div>
                         <div class="text-product">
-                            <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
-                            <p class="seller">Vendeur : Martin Vendeur (95)</p>
-                            <p class="prix">{{ item.0.prix }} €</p>
+                            <h2><a href="#" class="title-product">{{ product.0.title }}</a></h2>
+                            <p class="seller">Vendeur : {{ product.0.getUser.getUsername }}</p>
+                            <p class="prix">{{ product.0.prix }} €</p>
                         </div>
                         <div class="statproduct">
-                            <p class="pictostat statbea">BEA : {{ item.0.beaute }}</p>
-                            <p class="pictostat statcha">CHA : {{ item.0.charisme }}</p>
-                            <p class="pictostat statint">INT : {{ item.0.intelligence }}</p>
+                            <p class="pictostat statbea">BEA : {{ product.0.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ product.0.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ product.0.intelligence }}</p>
                         </div>
                     </div>
                 </li>
