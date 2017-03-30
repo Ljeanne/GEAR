@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/removeFavoris", name="removeFavoris")
+     * @Route("/addFavoris/{user_id}/{product_id}", name="addFavoris")
      */
     public function addFavoris($user_id, $product_id)
     {
@@ -33,7 +33,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/removeFavoris")
+     * @Route("/removeFavoris/{favoris_id}")
      * @param $favoris_id
      */
     public function removeFavoris($favoris_id){
