@@ -14,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Application
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="melon\RefappBundle\Entity\ApplicationRepository")
+ * @ORM\Entity(repositoryClass="GearPlusBundle\Repository\ProductRepository")
  */
 class Favoris {
 

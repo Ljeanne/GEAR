@@ -74,16 +74,19 @@ class ProductController extends Controller
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function removeFavoris($favorisid){
+
         $repository = $this->getDoctrine()->getRepository(Favoris::class);
-        $remove = $repository->findById($favorisid);
         $em = $this->getDoctrine()->getManager();
+
+        $productid = $repository->findOneById($favorisid);
+        $productid = $productid->getId();
+        $remove = $repository->findOneById($favorisid);
+
         $em->remove($remove);
         $em->flush();
 
 
-        $repository = $this->getDoctrine()->getRepository(Favoris::class);
-        $productid = $repository->findOneById($favorisid);
-        $productid = $productid->getId();
+
 
 
         return $this->redirectToRoute('product_show', array('id' => $productid));
