@@ -21,7 +21,18 @@ class User extends BaseUser
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
     protected $id;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="user" , cascade={"persist"})
+
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id", nullable=false)
+     */
+    protected $products;
+
+
+
 
     /**
      * @var string

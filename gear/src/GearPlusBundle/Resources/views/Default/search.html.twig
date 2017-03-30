@@ -1,17 +1,22 @@
-{% extends 'base.html.twig' %}
+{% include 'base.html.twig' %}
 
 
 {% block body %}
 
     <body>
-
-    {% block header %}{% endblock %}
-
         <main class="center">
             <h1>Recherche</h1>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
+
+            <form action="#" method="post">
+                {{ form_row(form.title) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.prix) }}
+                {{ form_row(form.charisme) }}
+                {{ form_row(form.intelligence) }}
+                {{ form_row(form.beaute) }}
+                {{ form_row(form.submit) }}
+            </form>
+
 
             <a href="{{ path('product_new') }}" style=" margin: 26px 0; display: block;">Create a new product</a>
 

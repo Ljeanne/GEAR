@@ -1,11 +1,7 @@
-{% extends 'base.html.twig' %}
-
-{% block body %}
+{% include 'base.html.twig' %}
 
     <main class="center">
-
         <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="#">en vous connectant</a>. </p>
-
         <ul class="listproduct">
 
             {% for item in tableau %}
@@ -30,5 +26,4 @@
 
         </ul>
     </main>
-
 {% endblock %}

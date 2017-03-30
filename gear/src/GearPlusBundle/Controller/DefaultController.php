@@ -13,7 +13,7 @@ class DefaultController extends Controller
 {
 
     /**
-     * @Route("/accueil")
+     * @Route("/", name="home")
      */
 
     // ACCUEIL
@@ -48,7 +48,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/user")
+     * @Route("/profileuser", name="profileuser")
      */
 
     // ACCUEIL
