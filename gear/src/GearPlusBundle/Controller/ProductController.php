@@ -19,6 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
  */
 class ProductController extends Controller
 {
+
     /**
      * Check if this user has this product as favoris
      * @param $product_id
@@ -44,7 +45,7 @@ class ProductController extends Controller
     /**
      * @Route("/addFavoris/{userid}/{productid}", name="addFavoris")
      */
-    public function addFavoris($productid)
+    public function addFavoris($userid, $productid)
     {
         $em = $this->getDoctrine()->getManager();
         $favoris = new favoris();
@@ -232,7 +233,7 @@ class ProductController extends Controller
      * Creates a form to delete a product entity.
      *
      * @param Product $product The product entity
-     *
+     *git
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Product $product)
