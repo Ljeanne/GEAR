@@ -1,7 +1,7 @@
 {% include 'base.html.twig' %}
 
-    <main class="fiche center">
-
+    <main class="center">
+        <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="#">en vous connectant</a>. </p>
         <ul class="listproduct">
 
             {% for item in tableau %}
@@ -12,7 +12,7 @@
                         </div>
                         <div class="text-product">
                             <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
-                            <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                            <p class="seller">Vendeur : Martin Vendeur (95)</p>
                             <p class="prix">{{ item.0.prix }} €</p>
                         </div>
                         <div class="statproduct">
@@ -23,5 +23,7 @@
                     </div>
                 </li>
             {% endfor %}
+
         </ul>
     </main>
+{% endblock %}

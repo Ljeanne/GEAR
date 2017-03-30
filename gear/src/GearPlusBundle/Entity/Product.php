@@ -16,7 +16,6 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class Product
 {
 
-
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="products" , cascade={"persist"})
 
@@ -30,7 +29,6 @@ class Product
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
      */
     private $category;
-
 
     /**
      * @var int
@@ -267,24 +265,6 @@ class Product
         return $this->beaute;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-
     /**
      * Set category
      *
@@ -294,6 +274,7 @@ class Product
      */
 
     public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+
 
     {
         $this->category = $category;
@@ -310,8 +291,6 @@ class Product
     {
         return $this->category;
     }
-
-
 
     public function __toString()
     {
