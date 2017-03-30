@@ -1,5 +1,11 @@
 # GEAR
 
+# Configuration de base:
+## Apache => 2.2
+## Symfony => 3
+## PHP => 5.5
+## MySQL => 5.5
+
 # Initialisation du projet
 ## 1) mettre à jours les dépendances :
 ## cd gear
@@ -18,6 +24,5 @@
 ## 1) php bin/console fos:user:promote user1
 ## 2) donner le role ROLE_ADMIN 
 
-
-#Demarrer le server
+# Demarrer le server
 ## php bin/console server:run
