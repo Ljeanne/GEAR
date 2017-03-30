@@ -21,7 +21,12 @@
             {#{% endif %}#}
 
             {% endif %}
-            <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
+            <h2>
+                <a href="#" class="title-product">{{ product.title }}</a>
+                {% if fav %}
+                    <i style="color: blue;" class="fa fa-star fa-2x" aria-hidden="true"></i>
+                {% endif %}
+            </h2>
             <p>Vendeur : {{ product.getUser.getUsername }}</p>
             <p class="prix">{{ product.prix }} €</p>
         </div>

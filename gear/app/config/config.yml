@@ -97,9 +97,6 @@ easy_admin:
                 - { property: 'plainPassword', type: 'text', type_options: { required: false } }
                 - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
             edit:
-                  fields:
-                        - { property: 'plainPassword', type_options: { required: false} }
-                  form_options: { validation_groups: ['Profile'] }
             new:
                   fields:
                         - { property: 'plainPassword', type_options: { required: true} }
