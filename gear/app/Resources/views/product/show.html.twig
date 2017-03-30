@@ -6,6 +6,20 @@
             <img src="{% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}">
         </div>
         <div class="text-product clearfix">
+            {% if app.user %}
+                {#{% if fav %}#}
+                    {#<a href="{{ path('removeFavoris', {'favorisid':fav}) }}"> Supprimer des favoris</a>#}
+                {#{% elseif fav==false %}#}
+                    {#<a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>#}
+
+                {#{% endif %}#}
+
+            {% if fav==false %}
+                <a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>
+
+            {% endif %}
+
+            {% endif %}
             <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
             <p>Vendeur : {{ product.getUser.getUsername }}</p>
             <p class="prix">{{ product.prix }} €</p>
