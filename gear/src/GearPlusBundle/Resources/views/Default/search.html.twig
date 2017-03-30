@@ -31,7 +31,7 @@
                                 <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
                             </div>
                             <div class="text-product">
-                                <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
+                                <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
                                 <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
                                 <p class="prix">{{ product.prix }} €</p>
                             </div>
