@@ -2,10 +2,15 @@
 
 namespace GearPlusBundle\Controller;
 
+use GearPlusBundle\Entity\Favoris;
 use GearPlusBundle\Entity\Product;
+use GearPlusBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Product controller.
@@ -14,11 +19,82 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  */
 class ProductController extends Controller
 {
+
+    /**
+     * Check if this user has this product as favoris
+     * @param $product_id
+     * @return bool
+     */
+    public function hasFavoris($product_id){
+
+        $userId=$this->getUser()->getId();
+        $em = $this->getDoctrine()->getManager();
+        $elements=$em->createquery('SELECT DISTINCT f.id FROM GearPlusBundle:Favoris f WHERE f.user=:userid AND f.product=:productid')
+            ->setParameter('userid',$userId)
+            ->setParameter('productid',$product_id)
+            ->getResult();
+
+        if(count($elements)>0){
+            return $elements[0]['id'];
+        }
+        else{
+            return false;
+        }
+
+    }
+    /**
+     * @Route("/addFavoris/{userid}/{productid}", name="addFavoris")
+     */
+    public function addFavoris($userid, $productid)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $favoris = new favoris();
+
+        $user = $this->getUser();
+
+
+        $prodrep = $this->getDoctrine()->getRepository(Product::class);
+        $prod= $prodrep->findOneById($productid);
+
+        $favoris -> setUser($user);
+        $favoris -> setProduct($prod);
+
+
+        $em->persist($favoris);
+        $em->flush();
+
+        return $this->redirectToRoute('product_show', array('id' => $productid));
+
+
+    }
+
+    /**
+     * @Route("/removeFavoris/{favorisid}", name="removeFavoris")
+     * @param $favorisid
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeFavoris($favorisid){
+        $repository = $this->getDoctrine()->getRepository(Favoris::class);
+        $remove = $repository->findById($favorisid);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($remove);
+        $em->flush();
+
+
+        $repository = $this->getDoctrine()->getRepository(Favoris::class);
+        $productid = $repository->findOneById($favorisid);
+        $productid = $productid->getId();
+
+
+        return $this->redirectToRoute('product_show', array('id' => $productid));
+
+    }
+
     /**
      * Lists all product entities.
      *
      * @Route("/", name="product_index")
-     * @Method("GET")
+     * @Method("POST")
      */
     public function indexAction()
     {
@@ -66,8 +142,9 @@ class ProductController extends Controller
     public function showAction(Product $product)
     {
         $deleteForm = $this->createDeleteForm($product);
-
+        $fav=$this->hasFavoris($product->getId());
         return $this->render('product/show.html.twig', array(
+            'fav'=> $fav,
             'product' => $product,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -109,7 +186,7 @@ class ProductController extends Controller
         {
             $request->getSession()
                 ->getFlashBag()
-                ->add('failure', 'Vous ne pouvez modifier ce produit: Il ne vous appartient pas !!! SALOPARD !!!!')
+                ->add('failure', 'Vous ne pouvez modifier ce produit: Il ne vous appartient pas !!!')
             ;
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
@@ -145,7 +222,7 @@ class ProductController extends Controller
         {
             $request->getSession()
                 ->getFlashBag()
-                ->add('failure', 'Vous ne pouvez supprimer ce produit: Il ne vous appartient pas !!! SALOPARD !!!!')
+                ->add('failure', 'Vous ne pouvez supprimer ce produit: Il ne vous appartient pas !!!')
             ;
             return $this->redirectToRoute('product_show', array('id' => $product->getId()));
         }
