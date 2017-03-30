@@ -33,7 +33,8 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'GearPlusBundle\Entity\Product'
+            'data_class' => 'GearPlusBundle\Entity\Product',
+            'csrf_protection' => false,
         ));
     }
 
