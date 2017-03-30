@@ -2,6 +2,7 @@
 
 namespace GearPlusBundle\Controller;
 
+use GearPlusBundle\Entity\Favoris;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use GearPlusBundle\Form\ProductType;
@@ -45,10 +46,12 @@ class DefaultController extends Controller
     public function userObject()
     {
         $userId=$this->getUser()->getId();
-        $allProducts = $this->getDoctrine()->getRepository(Product::class)->findBy(
-            array('user'=>$userId));
-        return $this->render('GearPlusBundle:Default:user.html.twig',['tout_les_prod'=>$allProducts]);
+        $allProducts = $this->getDoctrine()->getRepository(Product::class)->findBy(array('user'=>$userId));
+
+        $allFav = $this->getDoctrine()->getRepository(Favoris::class)->findBy(array('user'=>$userId));
+        return $this->render('GearPlusBundle:Default:user.html.twig',['tout_les_prod'=>$allProducts, 'tout_fav'=>$allFav]);
     }
+
 
 
     /**
