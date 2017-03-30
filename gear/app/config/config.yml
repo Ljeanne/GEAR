@@ -77,3 +77,30 @@ fos_user:
     from_email:
         address: "%mailer_user%"
         sender_name: "%mailer_user%"
+
+easy_admin:
+    site_name: 'Gear'
+    entities:
+        Product:
+            class: GearPlusBundle\Entity\Product
+        Category:
+            class: GearPlusBundle\Entity\Category
+        User:
+            class: GearPlusBundle\Entity\User
+            form:
+            fields:
+                - username
+                - email
+                - enabled
+                - lastLogin
+                # if administrators are allowed to edit users' passwords and roles, add this:
+                - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+                - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+            edit:
+                  fields:
+                        - { property: 'plainPassword', type_options: { required: false} }
+                  form_options: { validation_groups: ['Profile'] }
+            new:
+                  fields:
+                        - { property: 'plainPassword', type_options: { required: true} }
+                  form_options: { validation_groups: ['Registration'] }

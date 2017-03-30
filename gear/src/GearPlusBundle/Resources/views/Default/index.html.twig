@@ -28,24 +28,29 @@
     </header>
 
     <main class="fiche center">
+
         <ul class="listproduct">
-            <li class="product">
-                <div class="gotall">
-                    <div class="imgproduct">
-                        <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+
+            {% for item in tableau %}
+                <li class="product">
+                    <div class="gotall">
+                        <div class="imgproduct">
+                            <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+                        </div>
+                        <div class="text-product">
+                            <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
+                            <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
+                            <p class="prix">{{ item.0.prix }} €</p>
+                        </div>
+                        <div class="statproduct">
+                            <p class="pictostat statbea">BEA : {{ item.0.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ item.0.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ item.0.intelligence }}</p>
+                        </div>
                     </div>
-                    <div class="text-product">
-                        <h2><a href="#" class="title-product">Casquette DOPE</a></h2>
-                        <p>Vendeur : <a href="#" class="seller">Martin Vendeur (95)</a></p>
-                        <p class="prix">12 €</p>
-                    </div>
-                    <div class="statproduct">
-                        <p class="pictostat statbea">BEA : 0</p>
-                        <p class="pictostat statcha">CHA : 0</p>
-                        <p class="pictostat statint">INT : 0</p>
-                    </div>
-                </div>
-            </li>
+                </li>
+            {% endfor %}
+
         </ul>
     </main>
 
