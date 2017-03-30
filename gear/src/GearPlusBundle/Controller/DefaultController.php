@@ -7,10 +7,42 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use GearPlusBundle\Form\ProductType;
 use Symfony\Component\HttpFoundation\Request;
 use GearPlusBundle\Entity\Product;
+use GearPlusBundle\Entity\Favoris;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class DefaultController extends Controller
 {
+    /**
+     * @Route("/removeFavoris", name="removeFavoris")
+     */
+    public function addFavoris($user_id, $product_id)
+    {
+        $favoris = new favoris();
+        $favoris -> setUser($user_id);
+        $favoris -> setProduct($product_id);
+
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($favoris);
+        $em->flush();
+
+        return new Response('Favoris ajouter'.$favoris->getId());
+
+
+    }
+
+    /**
+     * @Route("/removeFavoris")
+     * @param $favoris_id
+     */
+    public function removeFavoris($favoris_id){
+        $repository = $this->getDoctrine()->getRepository('GearPlusBundle:Product');
+        $remove = $repository->findById($favoris_id);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($remove);
+        $em->flush();
+    }
     /**
      * @Route("/annonces")
      */
