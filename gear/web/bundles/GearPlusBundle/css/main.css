@@ -33,13 +33,13 @@ nav li a { color: #565456; background-repeat:  no-repeat; background-position:  
 #search { background-image: url(../media/search.png) }
 #connect { background-image: url(../media/user.png); }
 
-@media (min-width: 960px) {
+@media (min-width: 1170px) {
     nav { margin: auto; width: 70%; max-width: 1300px }
     #logo, ul { display: inline-block; }
     #logo { width: 80px; height: 73px; margin: 10px 30px; }
-    nav ul { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 465px; }
+    nav ul { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 585px; }
     nav li { margin: 0 12px; display: inline-block }
-    nav li a { font-size: 20px; }
+    nav li a { font-size: 18px; }
     nav li a:hover { color: #9f5aa9; text-decoration: underline; }
     #logo:hover { background-image: url(../media/gear-hover.png) }
     #home:hover { background-image: url(../media/home-hover.png); }
@@ -51,7 +51,7 @@ nav li a { color: #565456; background-repeat:  no-repeat; background-position:  
     header { padding: 12px 0; }
     nav { width: 100%; }
     nav li { width: 180px; display: block; margin: 15px auto; }
-    nav li a { font-size: 24px; }
+    nav li a { font-size: 21px; }
     #logo { display: block; width: 80px; height: 73px; margin: auto; }
     #burger { position: absolute; top: 0; background: #8e4949; width: 47px; height: 47px; margin: 25px; z-index: 1; background: url(../media/menu.png) no-repeat center; background-size: cover; }
 }
