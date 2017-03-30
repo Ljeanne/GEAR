@@ -31,6 +31,22 @@ class User extends BaseUser
      */
     protected $products;
 
+    /**
+     * @return mixed
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param mixed $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    }
+
 
     /**
      * @var string
