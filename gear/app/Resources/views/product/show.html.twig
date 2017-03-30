@@ -7,19 +7,18 @@
         </div>
         <div class="text-product clearfix">
             {% if app.user %}
-                {#{% if fav %}#}
-                    {#<a href="{{ path('removeFavoris', {'favorisid':fav}) }}"> Supprimer des favoris</a>#}
-                {#{% elseif fav==false %}#}
-                    {#<a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>#}
-
-                {#{% endif %}#}
-
-                {% if fav==false %}
-                    <a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>
-                {% elseif fav %}
+                {% if fav %}
                     <a href="{{ path('removeFavoris', {'favorisid':fav}) }}"> Supprimer des favoris</a>
+                {% elseif fav==false %}
+                    <a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>
+
                 {% endif %}
 
+
+            {#{% if fav==false %}#}
+                {#<a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>#}
+
+            {#{% endif %}#}
 
             {% endif %}
             <h2><a href="#" class="title-product">{{ product.title }}</a></h2>

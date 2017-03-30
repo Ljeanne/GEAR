@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Application
  *
- * @ORM\Table(name="favoris")
+ * @ORM\Table()
  * @ORM\Entity(repositoryClass="GearPlusBundle\Repository\ProductRepository")
  */
 class Favoris {
