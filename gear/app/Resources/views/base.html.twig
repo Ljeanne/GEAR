@@ -2,12 +2,36 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Welcome!</title>
+        <link rel="shortcut icon" type="image/png" href="{{ asset('bundles/GearPlusBundle/media/favicon.png') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/reset.css') }}" />
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/GearPlusBundle/css/main.css') }}" />
+        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('bundles/GearPlusBundle/js/main.js') }}"></script>
+        <title>Accueil</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
     </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
+
+        {% block header %}
+
+            <header>
+              <div id="burger"></div>
+                <nav class="center">
+                    <a href="{{ path("home") }}" id="logo"></a>
+                    <ul  class="menu-options">
+                        <li><a href="{{ path("home") }}" id="home">Accueil</a></li>
+                        <li><a href="{{ path('annonces') }}" id="search">Rechercher</a></li>
+                        {% if app.user %}
+                          <li><a href="profileuser" id="connect">Mon compte</a></li>
+                        {% else %}
+                           <li><a href="login" id="connect">Se connecter</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </header>
+        {% endblock %}
+        
+{% block body %}{% endblock %}

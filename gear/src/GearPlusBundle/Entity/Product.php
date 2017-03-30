@@ -16,13 +16,28 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 class Product
 {
 
-
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="products" , cascade={"persist"})
 
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     private $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
@@ -84,10 +99,10 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column (name="avatar", type="string", length=255)
+     * @ORM\Column (name="avatar", type="string", length=255, nullable=true)
      */
 
-    private $avatar="https://cdn2.iconfinder.com/data/icons/mobile-and-internet-business/285/qr_code-128.png";
+    private $avatar;
 
     /**
      * @return mixed
@@ -266,24 +281,6 @@ class Product
         return $this->beaute;
     }
 
-
-    /**
-     * @return mixed
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
-     * @param mixed $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
-
-
     /**
      * Set category
      *
@@ -293,6 +290,7 @@ class Product
      */
 
     public function setCategory(\GearPlusBundle\Entity\Category $category = null)
+
 
     {
         $this->category = $category;
@@ -309,8 +307,6 @@ class Product
     {
         return $this->category;
     }
-
-
 
     public function __toString()
     {

@@ -1,57 +1,30 @@
-<!doctype html>
-<html lang="FR-fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
-    </head>
-    <body>
-    <h1>Recherche</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+{% include 'base.html.twig' %}
 
-    <h1>Liste des Annonces</h1>
+{% block body %}
+    <main class="center">
+        <p class="intro">Bienvenue sur GearPlus.com : le site e-commerce pour augmenter vos stats (BEAUTÉ, CHARISME & INTELLIGENCE). Postez vos annonces et vendez vos produits <a href="#">en vous connectant</a>. </p>
+        <ul class="listproduct">
 
-    <table>
-            <tr>
-                <th>
-                    Titre
-                </th>
-                <th>
-                    Description
-                </th>
-                <th>
-                    Charisme
-                </th>
-                <th>
-                    Beaute
-                </th>
-                <th>
-                    Intelligence
-                </th>
-            </tr>
-        {% for item in allprod %}
-            <tr>
-                <td>
-                    {{ item.title }}
-                </td>
-                <td>
-                    {{ item.description }}
-                </td>
-                <td>
-                    {{ item.charisme }}
-                </td>
-                <td>
-                    {{ item.beaute }}
-                </td>
-                <td>
-                    {{ item.intelligence }}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-    </body>
-</html>
+            {% for item in tableau %}
+                <li class="product">
+                    <div class="gotall">
+                        <div class="imgproduct">
+                            <img src="{{ asset('bundles/GearPlusBundle/media/test.jpg') }}">
+                        </div>
+                        <div class="text-product">
+                            <h2><a href="#" class="title-product">{{ item.0.title }}</a></h2>
+                            <p class="seller">Vendeur : Martin Vendeur (95)</p>
+                            <p class="prix">{{ item.0.prix }} €</p>
+                        </div>
+                        <div class="statproduct">
+                            <p class="pictostat statbea">BEA : {{ item.0.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ item.0.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ item.0.intelligence }}</p>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+
+        </ul>
+    </main>
+{% endblock %}

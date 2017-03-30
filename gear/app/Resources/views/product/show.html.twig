@@ -1,52 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Product</h1>
+    <main class="fiche center">
+        <div class="imgproduct-f">
+            <img src="            {% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}">
+        </div>
+        <div class="text-product clearfix">
+            <h2><a href="#" class="title-product">{{ product.title }}</a></h2>
+            <p>Vendeur : {{ product.getUser.getUsername }}</p>
+            <p class="prix">{{ product.prix }} €</p>
+        </div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ product.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ product.prix }}</td>
-            </tr>
-            <tr>
-                <th>Charisme</th>
-                <td>{{ product.charisme }}</td>
-            </tr>
-            <tr>
-                <th>Intelligence</th>
-                <td>{{ product.intelligence }}</td>
-            </tr>
-            <tr>
-                <th>Beaute</th>
-                <td>{{ product.beaute }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <div class="statproduct-f">
+            <p class="pictostat statbea">BEAUTÉ : {{ product.beaute }}</p>
+            <p class="pictostat statcha">CHARISME : {{ product.charisme }}</p>
+            <p class="pictostat statint">INTELLIGENCE : {{ product.intelligence }}</p>
+        </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('product_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('product_edit', { 'id': product.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <div class="fiche-content">
+            <div class="description">
+                <h2>Description</h2>
+                <p>{{ product.description }}</p>
+            </div>
+            <div class="contact">
+                <h2>Contact :</h2>
+                <ul>
+                    <li>Email : <a href="#">{{ product.getUser.getEmail }}</a> </li>
+                </ul>
+            </div>
+        </div>
+    </main>
 {% endblock %}

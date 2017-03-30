@@ -1,0 +1,58 @@
+{% include 'base.html.twig' %}
+
+
+{% block body %}
+
+    <body>
+        <main class="center">
+            <h1>Recherche</h1>
+
+            <form action="#" method="post">
+                {{ form_row(form.title) }}
+                {{ form_row(form.category) }}
+                {{ form_row(form.prix) }}
+                {{ form_row(form.charisme) }}
+                {{ form_row(form.intelligence) }}
+                {{ form_row(form.beaute) }}
+                {{ form_row(form.submit) }}
+            </form>
+
+
+            <a href="{{ path('product_new') }}" style=" margin: 26px 0; display: block;">Create a new product</a>
+
+            <h1>Products list</h1>
+
+
+            <ul class="listproduct">
+                {% for product in products %}
+                    <li class="product">
+                        <div class="gotall">
+                            <div class="imgproduct">
+                                <img src="
+            {% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}
+">
+                            </div>
+                            <div class="text-product">
+                                <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
+                                <p>Vendeur : {{ product.getUser.getUsername }}</p>
+                                <p class="prix">{{ product.prix }} €</p>
+                            </div>
+                            <div class="statproduct">
+                                <p class="pictostat statbea">BEA : {{ product.beaute }}</p>
+                                <p class="pictostat statcha">CHA : {{ product.charisme }}</p>
+                                <p class="pictostat statint">INT : {{ product.intelligence }}</p>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <ul>
+                <li>
+                </li>
+            </ul>
+
+        </main>
+
+    </body>
+    {% endblock %}

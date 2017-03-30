@@ -13,6 +13,52 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * @Route("/", name="home")
+     */
+
+    // ACCUEIL
+    public function accueilObject()
+    {
+        //
+        $entitymanager = $this->getDoctrine()->getManager();
+        $elements = $entitymanager->createquery('SELECT p.id FROM GearPlusBundle:Product p')->getResult();
+        $length = count($elements);
+        $i = 0;
+        $tableau = [];
+        while ($i<5) {
+            $rand = rand(0, $length-1);
+            $id1 = $elements[$rand];
+            $repository = $this->getDoctrine()->getRepository(Product::class);
+            $ele1 = $repository->findById($id1['id']);
+            array_push($tableau, $ele1);
+            $i++;
+        }
+        return $this->render('GearPlusBundle:Default:index.html.twig', ['tableau'=>$tableau]);
+    }
+
+
+    /**
+     * @Route("/object")
+     */
+
+    // ACCUEIL
+    public function objectObject()
+    {
+        return $this->render('GearPlusBundle:Default:object.html.twig');
+    }
+
+    /**
+     * @Route("/profileuser", name="profileuser")
+     */
+
+    // Profil
+    public function userObject()
+    {
+        return $this->render('GearPlusBundle:Default:user.html.twig');
+    }
+
     /**
      * @Route("/addFavoris/{user_id}/{product_id}", name="addFavoris")
      */
@@ -44,7 +90,8 @@ class DefaultController extends Controller
         $em->flush();
     }
     /**
-     * @Route("/annonces")
+     * @Route("/annonces", name="annonces")
+
      */
     public function affProducts(Request $request)
     {
@@ -103,10 +150,13 @@ class DefaultController extends Controller
             }
 
             $find = $sql->getResult();
-            return $this->render('GearPlusBundle:Default:index.html.twig',['allprod'=>$find, 'form'=>$form->createView()]);
+            return $this->render('GearPlusBundle:Default:search.html.twig',['products'=>$find, 'form'=>$form->createView()]);
         }
 
 
-        return $this->render('GearPlusBundle:Default:index.html.twig',['form' => $form->createView(), 'allprod'=>$allprod]);
+
+
+
+        return $this->render('GearPlusBundle:Default:search.html.twig',['form' => $form->createView(), 'products'=>$allprod]);
     }
 }
