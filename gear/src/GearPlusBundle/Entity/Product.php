@@ -24,6 +24,22 @@ class Product
     private $user;
 
     /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="products" , cascade={"persist"})
 
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id", nullable=false)
