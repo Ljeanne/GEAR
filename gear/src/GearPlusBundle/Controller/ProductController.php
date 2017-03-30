@@ -235,7 +235,7 @@ class ProductController extends Controller
      * Creates a form to delete a product entity.
      *
      * @param Product $product The product entity
-     *
+     *git
      * @return \Symfony\Component\Form\Form The form
      */
     private function createDeleteForm(Product $product)

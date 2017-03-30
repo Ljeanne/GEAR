@@ -2,57 +2,57 @@
 
 {% block body %}
 
-    {# console : php ./bin/console debug;router #}
-    <h1>{{ app.user.username }}</h1>
-    <h1>{{ app.user.email }}</h1>
-    <a href="{{ path ('fos_user_profile_edit') }}">Edit Username / Email</a> </br>
-    <a href="{{ path ('fos_user_change_password') }}">Edit Password</a></br>
-    <a href="{{ path ('product_new') }}">Crée un nouveau produit</a></br>
+    <main class="center">
+        <h1>{{ app.user.username }}</h1>
+        <h1>{{ app.user.email }}</h1>
+        <a href="{{ path ('fos_user_profile_edit') }}">Edit Username / Email</a> </br>
+        <a href="{{ path ('fos_user_change_password') }}">Edit Password</a></br>
+        <a href="{{ path ('product_new') }}">Crée un nouveau produit</a></br>
 
-    <h1>Vos produits</h1>
-    <ul class="listproduct">
-        {% for product in tout_les_prod %}
-            <li class="product">
-                <div class="gotall">
-                    <div class="imgproduct">
-                        <img src="{% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}">
+        <h1>Vos produits</h1>
+        <ul class="listproduct">
+            {% for product in tout_les_prod %}
+                <li class="product">
+                    <div class="gotall">
+                        <div class="imgproduct">
+                            <img src="{% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}">
+                        </div>
+                        <div class="text-product">
+                            <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
+                            <p class="seller">Vendeur : {{ product.getUser.getUsername }}</p>
+                            <p class="prix">{{ product.prix }} €</p>
+                        </div>
+                        <div class="statproduct">
+                            <p class="pictostat statbea">BEA : {{ product.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ product.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ product.intelligence }}</p>
+                        </div>
                     </div>
-                    <div class="text-product">
-                        <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
-                        <p class="prix">{{ product.prix }} €</p>
-                    </div>
-                    <div class="statproduct">
-                        <p class="pictostat statbea">BEA : {{ product.beaute }}</p>
-                        <p class="pictostat statcha">CHA : {{ product.charisme }}</p>
-                        <p class="pictostat statint">INT : {{ product.intelligence }}</p>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
+                </li>
+            {% endfor %}
+        </ul>
 
-    <h1>Vos Favoris</h1>
-    <ul class="listproduct">
-        {% for product in tout_fav %}
-            <li class="product">
-                <div class="gotall">
-                    <div class="imgproduct">
-                        <img src="{% if product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ product.avatar }}{% endif %}">
+        <h1>Vos Favoris</h1>
+        <ul class="listproduct">
+            {% for favoris in tout_fav %}
+                <li class="product">
+                    <div class="gotall">
+                        <div class="imgproduct">
+                            <img src="{% if favoris.product.avatar == null %}https://previews.123rf.com/images/megawinter/megawinter1405/megawinter140501072/28553313-cross-web-flat-icon-in-circle-Stock-Vector.jpg{% else %}{{ favoris.product.avatar }}{% endif %}">
+                        </div>
+                        <div class="text-product">
+                            <h2><a href="{{ path ('product_show', {'id' :favoris.product.id }) }}" class="title-product">{{ favoris.product.title }}</a></h2>
+                            <p class="seller">Vendeur : {{ favoris.product.getUser.getUsername }}</p>
+                            <p class="prix">{{ favoris.product.prix }} €</p>
+                        </div>
+                        <div class="statproduct">
+                            <p class="pictostat statbea">BEA : {{ favoris.product.beaute }}</p>
+                            <p class="pictostat statcha">CHA : {{ favoris.product.charisme }}</p>
+                            <p class="pictostat statint">INT : {{ favoris.product.intelligence }}</p>
+                        </div>
                     </div>
-                    <div class="text-product">
-                        <h2><a href="{{ path ('product_show', {'id' : product.id }) }}" class="title-product">{{ product.title }}</a></h2>
-                        <p class="seller">Vendeur : {{ product.getUser.getUsername }}</p>
-                        <p class="prix">{{ product.prix }} €</p>
-                    </div>
-                    <div class="statproduct">
-                        <p class="pictostat statbea">BEA : {{ product.beaute }}</p>
-                        <p class="pictostat statcha">CHA : {{ product.charisme }}</p>
-                        <p class="pictostat statint">INT : {{ product.intelligence }}</p>
-                    </div>
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-
-
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 {% endblock %}
