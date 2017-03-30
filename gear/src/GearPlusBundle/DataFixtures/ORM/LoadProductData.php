@@ -22,6 +22,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
         while($i <= 30){
             $prod = new Product();
             $cat = $manager->getRepository("GearPlusBundle:Category")->find(rand(1,3));
+            $user = $manager->getRepository("GearPlusBundle:User")->find($i);
             $prod->setTitle("Produit ".$i);
             $prod->setDescription("Description du produit ".$i);
             $prod->setPrix(rand (1, 200));
@@ -29,6 +30,7 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
             $prod->setCharisme(rand ( 1 , 15));
             $prod->setIntelligence(rand ( 1 , 15));
             $prod->setCategory($cat);
+            $prod->setUser($user);
             $manager->persist($prod);
             $i++;
         }
@@ -43,6 +45,6 @@ class LoadProductData extends AbstractFixture implements OrderedFixtureInterface
     public function getOrder()
     {
         // TODO: Implement getOrder() method.
-        return 2;
+        return 3;
     }
 }
