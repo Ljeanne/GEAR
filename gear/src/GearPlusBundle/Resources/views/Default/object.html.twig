@@ -1,3 +1,6 @@
+{% include 'base.html.twig' %}
+
+{% block boby %}
 <!doctype html>
 
 <html lang="fr">
@@ -16,16 +19,7 @@
 
     <body>
 
-        <header>
-            <nav class="center">
-                <a href="#" id="logo"></a>
-                <ul>
-                    <li><a href="index" id="home">Accueil</a></li>
-                    <li><a href="search" id="search">Rechercher</a></li>
-                    <li><a href="account" id="connect">Mon compte</a></li>
-                </ul>
-            </nav>
-        </header>
+
 
         <main class="fiche center">
             <div class="imgproduct-f">
@@ -58,3 +52,4 @@
 
     </body>
 </html>
+{% endblock %}
