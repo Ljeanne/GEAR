@@ -11,15 +11,15 @@
                     <a href="{{ path('removeFavoris', {'favorisid':fav}) }}"> Supprimer des favoris</a>
                 {% elseif fav==false %}
                     <a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>
-
                 {% endif %}
 
 
-            {#{% if fav==false %}#}
-                {#<a href="{{ path('addFavoris', {'userid':app.user.getId, 'productid':product.id}) }}"> Ajouter aux favoris</a>#}
-
-            {#{% endif %}#}
-
+                {% if app.user.getId == product.user.getId %}
+                    <br>
+                    <a href="{{ path('product_edit', {'id':product.id}) }}">Editer le produit</a>
+                    <br>
+                    <a href="{{ path('product_delete', {'id':product.id}) }}">Supprimer le produit</a>
+                {% endif %}
             {% endif %}
             <h2>
                 <a href="#" class="title-product">{{ product.title }}</a>
