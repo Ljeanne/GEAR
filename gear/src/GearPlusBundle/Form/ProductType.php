@@ -22,7 +22,7 @@ class ProductType extends AbstractType
             ->add('charisme', null, array('label' => 'Bonus Charisme', 'required' => false))
             ->add('intelligence', null, array('label' => 'Bonus Intelligence', 'required' => false))
             ->add('beaute', null, array('label' => 'Bonus Beauté', 'required' => false))
-            ->add('avatar', FileType::class, array('label' => 'Photo du produit','required' => false))
+            ->add('avatar', FileType::class, array('label' => 'Photo du produit','required' => false,'data_class' => null))
             ->add('user', null, array('label' => 'Utilisateur','required' => false))
             ->add('category', null, array('label' => 'Categorie du produit','required' => false))
             ->add('submit', SubmitType::class, array('label' => 'Envoyer'));

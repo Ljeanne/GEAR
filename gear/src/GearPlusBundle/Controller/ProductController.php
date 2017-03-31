@@ -138,7 +138,7 @@ class ProductController extends Controller
     /**
      * Finds and displays a product entity.
      *
-     * @Route("/{id}", name="product_show")
+     * @Route("/{id}/show", name="product_show")
      * @Method("GET")
      */
     public function showAction(Product $product)
@@ -174,7 +174,7 @@ class ProductController extends Controller
             if ($editForm->isSubmitted() && $editForm->isValid()) {
                 $this->getDoctrine()->getManager()->flush();
 
-                return $this->redirectToRoute('product_edit', array('id' => $product->getId()));
+                return $this->redirectToRoute('product_show', array('id' => $product->getId()));
             }
 
             return $this->render('product/edit.html.twig', array(
@@ -197,7 +197,7 @@ class ProductController extends Controller
     /**
      * Deletes a product entity.
      *
-     * @Route("/{id}", name="product_delete")
+     * @Route("/{id}/delete", name="product_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Product $product)
@@ -205,20 +205,27 @@ class ProductController extends Controller
 
         $user = $this->getUser();
         $userID = $this->getUser()->getId();
-        $product_user_id = $product->getUser()->getId();
+        $product_id = $product->getId();
 
-        if ($userID == $product_user_id OR $user->hasRole('ROLE_ADMIN') OR  $user->hasRole('ROLE_SUPER_ADMIN'))
+//        $favTab = $this->getDoctrine()->getRepository(Favoris::class)->findOneBy(array('product'=>$product_id));
+        $prod_to_delete = $this->getDoctrine()->getRepository(Product::class)->findOneBy(array('id'=>$product_id));
+
+        var_dump($prod_to_delete);
+//        var_dump($favTab);
+
+        if ($userID == $product->getUser()->getId() OR $user->hasRole('ROLE_ADMIN') OR $user->hasRole('ROLE_SUPER_ADMIN'))
         {
-            $form = $this->createDeleteForm($product);
+            $form = $this->createDeleteForm($prod_to_delete);
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $em->remove($product);
+                $em->remove($prod_to_delete);
+//                $em->remove($favTab);
                 $em->flush();
             }
 
-            return $this->redirectToRoute('product_index');
+            return $this->redirectToRoute('home');
         }
         else
         {
